@@ -1,7 +1,7 @@
 import { logotipo } from '@/libs/media'
 import Image from 'next/image'
 
-const HeaderNavApp = () => {
+const HeaderNavAuth = () => {
   return (
     <div className='w-full h-[80px]'>
       <header className='container-block flex items-center justify-between'>
@@ -22,4 +22,4 @@ const HeaderNavApp = () => {
     </div>
   )
 }
-export default HeaderNavApp
+export default HeaderNavAuth
