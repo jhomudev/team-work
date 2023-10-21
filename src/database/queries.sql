@@ -5,108 +5,133 @@ INSERT INTO
 VALUES
   (
     'jhonancaleb',
-    'jhonancalebm@gmailcom',
+    'jhonancalebm@gmail.com',
     'jhonan123',
     'Trabajador'
   ),
   (
     'jhonjosue',
-    'josue@gmailcom',
+    'josue@gmail.com',
     'jhon123',
     'Trabajador'
   ),
   (
     'Diego1999',
-    'diegori@gmailcom',
+    'diegori@gmail.com',
     'diego123',
     'Trabajador'
   ),
   (
     'maria12',
-    'maria123@gmailcom',
+    'maria123@gmail.com',
     'maria123',
     'Trabajador'
   ),
-  ('joseito', 'jose@gmailcom', 'jose123', 'Trabajador'),
-  ('vilma', 'vilma@gmailcom', 'vilma123', 'Trabajador'),
-  ('jack24', 'jack@gmailcom', 'jack123', 'Trabajador'),
+  (
+    'joseito',
+    'jose@gmail.com',
+    'jose123',
+    'Trabajador'
+  ),
+  (
+    'vilma',
+    'vilma@gmail.com',
+    'vilma123',
+    'Trabajador'
+  ),
+  ('jack24', 'jack@gmail.com', 'jack123', 'Trabajador'),
   (
     'anuelbe',
-    'anuela@gmailcom',
+    'anuela@gmail.com',
     'anuel123',
     'Trabajador'
   ),
   (
     'manuelt',
-    'manuel@gmailcom',
+    'manuel@gmail.com',
     'manuel123',
     'Trabajador'
   ),
   (
     'jackie-chan',
-    'jackiecha@gmailcom',
+    'jackiecha@gmail.com',
     'jackie123',
     'Trabajador'
   ),
-  ('nilda', 'nilda@gmailcom', 'nilda123', 'Trabajador'),
+  (
+    'nilda',
+    'nilda@gmail.com',
+    'nilda123',
+    'Trabajador'
+  ),
   (
     'joseph',
-    'joseph@gmailcom',
+    'joseph@gmail.com',
     'joseph123',
     'Trabajador'
   ),
   (
     'mario2000',
-    'mario@gmailcom',
+    'mario@gmail.com',
     'mario123',
     'Trabajador'
   ),
   /*EMPLOYERS*/
-  ('systec', 'systec@gmailcom', 'systec123', 'Empresa'),
-  ('anubis', 'anubis@gmailcom', 'anubis123', 'Empresa'),
-  ('JEHA', 'jeha@gmailcom', 'jeha123', 'Empresa'),
-  ('Jota', 'jota@gmailcom', 'jeha123', 'Empresa'),
+  (
+    'systec',
+    'systec@gmail.com',
+    'systec123',
+    'Empresa'
+  ),
+  (
+    'anubis',
+    'anubis@gmail.com',
+    'anubis123',
+    'Empresa'
+  ),
+  ('JEHA', 'jeha@gmail.com', 'jeha123', 'Empresa'),
+  ('Jota', 'jota@gmail.com', 'jeha123', 'Empresa'),
   (
     'TerraConsulting',
-    'sdf@gmailcom',
+    'sdf@gmail.com',
     'jeha123',
     'Empresa'
   ),
-  ('bajoC', 'dwe@gmailcom', 'jeha123', 'Empresa'),
-  ('enma', 'sdff@gmailcom', 'jeha123', 'Empresa'),
+  ('bajoC', 'dwe@gmail.com', 'jeha123', 'Empresa'),
+  ('enma', 'sdff@gmail.com', 'jeha123', 'Empresa'),
   (
     'Jobtrack',
-    'jessdfdfha@gmailcom',
+    'jessdfdfha@gmail.com',
     'jeha123',
     'Empresa'
   ),
   (
     'josephSolutions',
-    'jerwha@gmailcom',
+    'jerwha@gmail.com',
     'jeha123',
     'Empresa'
   ),
   (
     'MenSolus',
-    'je123wersdfha@gmailcom',
+    'je123wersdfha@gmail.com',
     'jeha123',
     'Empresa'
   ),
   (
     'OportunityAI',
-    'je31ha@gmailcom',
+    'je31ha@gmail.com',
     'jeha123',
     'Empresa'
   ),
   (
     'ForwardIa',
-    'jeh33a@gmailcom',
+    'jeh33a@gmail.com',
     'jeha123',
     'Empresa'
   ),
   (
     'Suriaconsulting',
-    'suriaconsulting@gmailcom',
+    'suriaconsulting@gmail.com',
     'Suriaconsulting123',
     'Empresa'
   );
@@ -632,9 +657,8 @@ SELECT
   employers.name as employer
 FROM
   jobs
-  INNER JOIN employers ON jobs.employerId = employers.employerId
--- WHERE
---   jobs.title LIKE "%Ingeniero%"
+  INNER JOIN employers ON jobs.employerId = employers.employerId -- WHERE
+  --   jobs.title LIKE "%Ingeniero%"
 ORDER BY
   jobs.jobId ASC
 LIMIT
@@ -727,10 +751,24 @@ FROM
   applications apps
   INNER JOIN jobs j ON apps.jobId = j.jobId
   INNER JOIN seekers seek ON apps.seekerId = seek.seekerId
-WHERE apps.jobId=18  
-;
-
-SHOW KEYS FROM applications WHERE Key_name  = 'PRIMARY';
+WHERE
+  apps.jobId = 18;
 
 
-SELECT userId, userHandle ,email, type FROM users WHERE email = 'jhonancalebm@gmail.com' AND password = 'jhonan123'
+SHOW KEYS
+FROM
+  applications
+WHERE
+  Key_name = 'PRIMARY';
+
+
+SELECT
+  userId,
+  userHandle,
+  email,
+  type
+FROM
+  users
+WHERE
+  email = 'jhonancalebm@gmail.com'
+  AND password = 'jhonan123'
