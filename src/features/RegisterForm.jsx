@@ -19,23 +19,23 @@ const RegisterForm = () => {
       >
         <div className='flex gap-x-5 flex-wrap'>
           <Form.Item {...configInput} className='flex-[1_0_200px]' name='names' label='Nombres'>
-            <Input placeholder='Ingresa tus nombres' />
+            <Input size='large' placeholder='Ingresa tus nombres' />
           </Form.Item>
           <Form.Item {...configInput} className='flex-[1_0_200px]' name='lastnames' label='Apellidos'>
-            <Input placeholder='Ingresa tus apellidos' />
+            <Input size='large' placeholder='Ingresa tus apellidos' />
           </Form.Item>
           <Form.Item {...configInput} className='flex-[1_0_200px]' name='phone' label='Teléfono'>
-            <Input placeholder='Ingresa tus teléfono' />
+            <Input size='large' placeholder='Ingresa tus teléfono' />
           </Form.Item>
           <Form.Item {...configInput} className='flex-[1_0_200px]' name='email' label='Email'>
-            <Input type='email' placeholder='Ingresa tu correo electrónico' />
+            <Input size='large' type='email' placeholder='Ingresa tu correo electrónico' />
           </Form.Item>
           <Form.Item {...configInput} className='flex-[1_0_200px]' name='password' label='Contraseña'>
-            <Input.Password placeholder='Crea tu contraseña' />
+            <Input.Password size='large' placeholder='Crea tu contraseña' />
           </Form.Item>
         </div>
         <Form.Item className='flex-[1_0_300px]'>
-          <Button type='primary' htmlType='submit'>Crear cuenta</Button>
+          <Button size='large' type='primary' htmlType='submit'>Crear cuenta</Button>
         </Form.Item>
       </Form>
     </div>

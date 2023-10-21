@@ -1,21 +1,40 @@
 'use client'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { Button, Form, Input } from 'antd'
+import { Button, Form, Input, notification } from 'antd'
 import { faLock, faUser } from '@fortawesome/free-solid-svg-icons'
-import axios from 'axios'
+// import axios from 'axios'
 import { useRouter } from 'next/navigation'
+import { signIn } from 'next-auth/react'
+import { useState } from 'react'
 
 const LoginForm = () => {
   const router = useRouter()
+  const [loading, setLoading] = useState(false)
+
   const handleSubmitForm = async (values) => {
-    const req = await axios.post('/api/auth/login', values)
-    const res = await req.data
-    if (res.auth.success) router.push(res.auth.access.route)
+    setLoading(true)
+    const { email, password } = values
+    const responseNextAuth = await signIn('credentials', {
+      email,
+      password,
+      redirect: false
+    })
+    if (responseNextAuth.error) {
+      setLoading(false)
+      notification.error({
+        message: 'Credenciales incorrectas',
+        description: 'No encontramos un usuario con las credenciales que puso. Verifique sus credenciales'
+      })
+      return
+    }
+    router.replace('/panel/jobs')
   }
+
   return (
     <div className='w-[min(100%,400px)]'>
       <h1 className='text-xl text-gray-600 font-semibold'>Ingrese a su cuenta</h1><br />
       <Form
+        requiredMark={false}
         onFinish={handleSubmitForm}
         layout='vertical'
       >
@@ -53,6 +72,7 @@ const LoginForm = () => {
             size='large'
             type='primary'
             className='w-full'
+            loading={loading}
           >
             Entrar
           </Button>

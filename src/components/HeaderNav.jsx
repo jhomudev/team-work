@@ -1,16 +1,17 @@
-'use client'
-import { useSession } from 'next-auth/react'
-import HeaderNavAuth from './HeaderNavAuth'
-import HeaderNavNoAuth from './HeaderNavNoAuth'
+import HeaderNavContentAuth from './HeaderNavContentAuth'
+import HeaderNavContentNoAuth from './HeaderNavContentNoAuth'
 
-const HeaderNav = () => {
-  const { data: session/* , status */ } = useSession()
-  // if (status === 'loading') {
-  //   return <p>Loading...</p>
-  // }
-
-  return session
-    ? <HeaderNavAuth />
-    : <HeaderNavNoAuth />
+const HeaderNav = ({ hasSession = false }) => {
+  return (
+    <div className='w-full h-[80px] bg-white shadow-sm grid place-items-center'>
+      <header className='container-block flex items-center gap-5'>
+        {
+          hasSession
+            ? <HeaderNavContentAuth />
+            : <HeaderNavContentNoAuth />
+        }
+      </header>
+    </div>
+  )
 }
 export default HeaderNav
