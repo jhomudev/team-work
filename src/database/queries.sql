@@ -731,3 +731,6 @@ WHERE apps.jobId=18
 ;
 
 SHOW KEYS FROM applications WHERE Key_name  = 'PRIMARY';
+
+
+SELECT userId, userHandle ,email, type FROM users WHERE email = 'jhonancalebm@gmail.com' AND password = 'jhonan123'

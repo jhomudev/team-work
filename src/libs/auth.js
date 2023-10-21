@@ -1,13 +1,12 @@
 import { conn } from './mysql'
 
 export const authenticateCredentials = async ({ email, password }) => {
-  const req = await conn.query('SELECT idName, email, names, lastnames, title FROM users WHERE email = ? AND password = ?', [email, password])
-  const userFound = JSON.parse(JSON.stringify(req))
+  const [userFound] = await conn.query('SELECT userId, userHandle ,email, type FROM users WHERE email = ? AND password = ?', [email, password])
 
-  if (userFound.length > 0) {
+  if (userFound) {
     return {
       success: true,
-      data: userFound[0],
+      data: userFound,
       message: 'Usuario encontrado'
     }
   }

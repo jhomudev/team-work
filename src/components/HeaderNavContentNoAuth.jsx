@@ -9,8 +9,8 @@ const HeaderNavContentNoAuth = () => {
       <div className='logo relative w-[140px] h-[35px]'>
         <Image src={logotipo} alt='logo team work' fill />
       </div>
-      <nav>
-        <ul className='flex items-center gap-3 ml-auto'>
+      <nav className=' ml-auto'>
+        <ul className='flex items-center gap-3'>
           <li>
             <Link href='/login'>
               {/* Ingresar */}
