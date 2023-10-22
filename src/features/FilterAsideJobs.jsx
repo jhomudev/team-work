@@ -1,9 +1,9 @@
 'use client'
 import { jobAreas, jobModes, jobTime, jobTypes, seniority } from '@/static/enums'
 import { Card, /* DatePicker, */ Form, Input, Select, Space } from 'antd'
-import { useSearchParams } from 'next/navigation'
+// import { useSearchParams } from 'next/navigation'
 
-const getDataOptions = (obj) => {
+export const getDataOptions = (obj) => {
   const array = []
 
   for (const key in obj) {
@@ -37,7 +37,7 @@ const FilterAsideJobs = () => {
           </Form.Item>
         </Form>
         <p className='text-sm text-gray-500 mb-3'>Realiza tu búsqueda mediante los filtros, asi encontrarás el puesto que buscas mas rápido.</p>
-        <Space className='w-full' wrap wra size={15}>
+        <Space className='w-full' wrap size={15}>
           <Select
             size='large'
             className='w-full'

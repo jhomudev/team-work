@@ -14,7 +14,7 @@ const JobsList = ({ dataJobs }) => {
 
   return areJobs
     ? (
-      <section className='flex-[1_0_300px]'>
+      <section className='w-full'>
         <main className='w-full grid gap-3 grid-cols-[repeat(auto-fit,minmax(min(100%,350px),1fr))]'>
           {
             jobs.map(job => <JobCard key={job.jobId} job={job} />)
@@ -28,13 +28,13 @@ const JobsList = ({ dataJobs }) => {
       <Empty
         image='https://gw.alipayobjects.com/zos/antfincdn/ZHrcdLPrvN/empty.svg'
         imageStyle={{ height: 60 }}
-        rootClassName='w-full flex flex-col items-center justify-center bg-white rounded-lg'
+        rootClassName='w-full min-h-[200px] flex flex-col items-center justify-center bg-white rounded-lg'
         description={
-          <span>
+          <p>
             {
-              keyword ? `No se econtraron trabajos relacionados a ${keyword}` : 'No se econtraron trabajos.'
+              keyword ? <>No se econtraron trabajos relacionados a <span className='text-pink-600'>"{keyword}"</span></> : 'No se econtraron trabajos.'
             }
-          </span>
+          </p>
       }
       >
         <Button

@@ -14,9 +14,8 @@ export const authOptions = {
         const res = await axios.post('http://localhost:3000/api/auth/login', credentials)
         const auth = await res.data
 
-        console.log(auth)
         // If no error and we have user data, return it
-        if (auth.success) return auth
+        if (auth.ok) return auth
         // Return null if user data could not be retrieved
         // throw auth
         return null

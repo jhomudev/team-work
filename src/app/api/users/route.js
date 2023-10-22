@@ -10,7 +10,7 @@ export const POST = async (req) => {
 
     if (reqDB.affectedRows > 0) {
       return NextResponse.json({
-        success: true,
+        ok: true,
         message: 'Usuario creado',
         insertedRow: {
           userId: reqDB.insertId,
@@ -23,14 +23,14 @@ export const POST = async (req) => {
     }
 
     return NextResponse.json({
-      success: false,
+      ok: false,
       message: 'Usuario no se pudo crear'
     }, {
       status: 400
     })
   } catch (error) {
     return NextResponse.json({
-      success: false,
+      ok: false,
       message: 'Algo no ocurrió bien',
       error
     }, {

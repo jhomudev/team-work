@@ -1,10 +1,10 @@
+import { authOptions } from '@/app/api/auth/[...nextauth]/route'
 import HeaderNav from '@/components/HeaderNav'
 import RegisterForm from '@/features/RegisterForm'
 import { imgMain } from '@/libs/media'
 import { getServerSession } from 'next-auth'
 import Image from 'next/image'
 import { redirect } from 'next/navigation'
-import { authOptions } from '../api/auth/[...nextauth]/route'
 
 const RegisterPage = async () => {
   const session = await getServerSession(authOptions)

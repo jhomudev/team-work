@@ -5,17 +5,17 @@ import { NextResponse } from 'next/server'
 export const POST = async (req) => {
   const { email, password } = await req.json()
   const auth = await authenticateCredentials({ email, password })
-  const { data, message, success } = auth
+  const { data, message, ok } = auth
 
-  if (auth.success) {
+  if (auth.ok) {
     return NextResponse.json({
-      success,
+      ok,
       message,
       data
     })
   }
   return NextResponse.json({
-    success,
+    ok,
     message
   }/* , {
     status: 400

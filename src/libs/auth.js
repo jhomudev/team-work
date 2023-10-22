@@ -5,13 +5,13 @@ export const authenticateCredentials = async ({ email, password }) => {
 
   if (userFound) {
     return {
-      success: true,
+      ok: true,
       data: userFound,
       message: 'Usuario encontrado'
     }
   }
   return {
-    success: false,
+    ok: false,
     data: null,
     message: 'No hay usuarios que coincidan con las credenciales'
   }

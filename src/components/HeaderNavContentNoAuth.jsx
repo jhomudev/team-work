@@ -18,7 +18,7 @@ const HeaderNavContentNoAuth = () => {
             </Link>
           </li>
           <li>
-            <Link href='/register'>
+            <Link href='/register/seeker'>
               {/* Crear cuenta */}
               <Button type='dashed'>Crear cuenta</Button>
             </Link>

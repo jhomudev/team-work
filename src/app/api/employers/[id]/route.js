@@ -27,14 +27,14 @@ export const GET = async (_, { params }) => {
       })
     }
     return NextResponse.json({
-      success: false,
+      ok: false,
       message: 'Employer no encontrado'
     }, {
       status: 400
     })
   } catch (error) {
     return NextResponse.json({
-      success: false,
+      ok: false,
       message: 'Algo no ocurrió bien',
       error
     }, {
@@ -52,7 +52,7 @@ export const PUT = async (req, { params }) => {
 
     if (reqDB.affectedRows > 0) {
       return NextResponse.json({
-        success: true,
+        ok: true,
         message: 'Employer actualizado',
         updatedRow: {
           employerId,
@@ -62,14 +62,14 @@ export const PUT = async (req, { params }) => {
     }
 
     return NextResponse.json({
-      success: false,
+      ok: false,
       message: 'Employer no se pudo actualizarr'
     }, {
       status: 400
     })
   } catch (error) {
     return NextResponse.json({
-      success: false,
+      ok: false,
       message: 'Algo no ocurrió bien',
       error
     }, {

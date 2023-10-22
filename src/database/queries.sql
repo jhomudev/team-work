@@ -673,7 +673,10 @@ UPDATE
 SET
   description = 'EDITADO...Estamos buscando un desarrollador web para unirse a nuestro equipo.'
 WHERE
-  `jobId` = 1 --select usesr
+  `jobId` = 1;
+
+
+--select usesr
 SELECT
   *
 FROM
