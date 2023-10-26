@@ -67,7 +67,7 @@ export const jobTypes = {
 export const jobTime = {
   fullTime: 'Tiempo completo',
   partTime: 'Tiempo parcial',
-  inTheMorning: 'Turno tarde',
+  inTheMorning: 'Turno mañana',
   inTheAfternoon: 'Turno tarde',
   inTheNight: 'Turno noche'
 }

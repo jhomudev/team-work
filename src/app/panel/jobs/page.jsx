@@ -1,6 +1,6 @@
 import FilterAsideJobs from '@/features/FilterAsideJobs'
 import JobsList from '@/features/JobsList'
-import UserInfo from '@/features/UserInfo'
+import { Breadcrumb } from 'antd'
 import axios from 'axios'
 
 const getJobs = async (searchParams = {}) => {
@@ -11,14 +11,19 @@ const getJobs = async (searchParams = {}) => {
   return data
 }
 
-const JobsPage = async ({ params, searchParams }) => {
+async function JobsPage ({ params, searchParams }) {
   const dataJobs = await getJobs(searchParams)
 
   return (
     <>
-      <UserInfo />
-      <h1 className='text-xl text-gray-700 font-semibold mb-5'>Trabajos</h1>
-      <hr />
+      <Breadcrumb
+        className='w-full'
+        items={[
+          {
+            title: <span>Bolsa de empleo</span>
+          }
+        ]}
+      />
       <br />
       <div className='flex gap-5 flex-col sm:flex-row'>
         <FilterAsideJobs />

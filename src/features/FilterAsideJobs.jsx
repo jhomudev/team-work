@@ -1,76 +1,86 @@
 'use client'
-import { jobAreas, jobModes, jobTime, jobTypes, seniority } from '@/static/enums'
-import { Card, /* DatePicker, */ Form, Input, Select, Space } from 'antd'
-// import { useSearchParams } from 'next/navigation'
+import { filterOption } from '@/libs/ant'
+import { JOB_OPTIONS } from '@/libs/utils/contants'
+import { faTrash } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { Button, Card, /* DatePicker, */ Form, Input, Select } from 'antd'
+import Title from 'antd/es/typography/Title'
+import Text from 'antd/es/typography/Text'
+import { usePathname, useRouter, useSearchParams } from 'next/navigation'
+import updateURLWithParams from '@/libs/utils/updateURLWithParams'
 
-export const getDataOptions = (obj) => {
-  const array = []
+function FilterAsideJobs () {
+  const router = useRouter()
+  const pathname = usePathname()
+  const searchParams = useSearchParams()
+  const serachParamsObj = Object.fromEntries(searchParams)
 
-  for (const key in obj) {
-    array.push({ value: key, label: obj[key] })
+  const handleSubmitForm = (data) => {
+    const { keyword } = data
+    router.push(`${pathname}?${updateURLWithParams(searchParams, {
+      q: keyword
+    })}`)
   }
-
-  return array
-}
-
-const FilterAsideJobs = () => {
-  const JOB_OPTIONS = {
-    modes: getDataOptions(jobModes),
-    types: getDataOptions(jobTypes),
-    time: getDataOptions(jobTime),
-    areas: jobAreas.map(area => ({
-      value: area,
-      label: area
-    })),
-    seniority: getDataOptions(seniority)
-  }
-
-  const filterOption = (input, option) => (option?.label ?? '').toLowerCase().includes(input.toLowerCase())
 
   return (
     <aside className='w-full md:w-[clamp(300px,30%,500px)] h-full'>
-      <Card className='w-full'>
-        <h2 className='mb-3 text-lg'>Filtro de trabajos</h2>
-        <Form layout='vertical'>
-          <Form.Item label='Realiza tu búsqueda hacia los puestos que desees.'>
+      <Card className='w-full' bodyStyle={{ display: 'flex', flexDirection: 'column' }}>
+        <Title level={3}>Filtro de trabajos</Title>
+        <Form layout='vertical' onFinish={handleSubmitForm}>
+          <Form.Item label={<Text type='secondary'>Realiza tu búsqueda hacia los puestos que desees.</Text>} name='keyword'>
             <Input.Search size='large' placeholder='Ingeniero de software...' />
           </Form.Item>
         </Form>
-        <p className='text-sm text-gray-500 mb-3'>Realiza tu búsqueda mediante los filtros, asi encontrarás el puesto que buscas mas rápido.</p>
-        <Space className='w-full' wrap size={15}>
-          <Select
-            size='large'
-            className='w-full'
-            showSearch
-            placeholder='Modalidad de trabajo'
-            optionFilterProp='children'
-              // onChange={onChange}
-              // onSearch={onSearch}
-            filterOption={filterOption}
-            options={JOB_OPTIONS.modes}
-          />
-          <Select
-            size='large'
-            className='w-full'
-            showSearch
-            placeholder='Tipo de trabajo'
-            optionFilterProp='children'
-              // onChange={onChange}
-              // onSearch={onSearch}
-            filterOption={filterOption}
-            options={JOB_OPTIONS.types}
-          />
-          <Select
-            size='large'
-            className='w-full'
-            showSearch
-            placeholder='Tiempo o Turno'
-            optionFilterProp='children'
-              // onChange={onChange}
-              // onSearch={onSearch}
-            filterOption={filterOption}
-            options={JOB_OPTIONS.time}
-          />
+        <Text type='secondary' className='!mb-3'>Realiza tu búsqueda mediante los filtros, asi encontrarás el puesto que buscas mas rápido.</Text>
+        <Form
+          layout='horizontal' wrapperCol={4} onValuesChange={(changedValues, allValues) => {
+            console.log({ changedValues, allValues })
+            const values = Object.fromEntries(
+              Object.entries(allValues).filter(([_, valor]) => !!valor)
+            )
+            router.push(`${pathname}?${updateURLWithParams(searchParams, {
+              ...values
+            })}`)
+          }}
+        >
+          <Form.Item name='jobMode'>
+            <Select
+              size='large'
+              className='w-full'
+              showSearch
+              placeholder='Modalidad de trabajo'
+              optionFilterProp='children'
+              onChange={(value, option) => {
+                console.log({ value, option })
+              }}
+              filterOption={filterOption}
+              options={JOB_OPTIONS.modes}
+            />
+          </Form.Item>
+          <Form.Item name='jobType'>
+            <Select
+              size='large'
+              className='w-full'
+              showSearch
+              placeholder='Tipo de trabajo'
+              optionFilterProp='children'
+              defaultValue={serachParamsObj.jobType}
+              filterOption={filterOption}
+              options={JOB_OPTIONS.types}
+            />
+          </Form.Item>
+          <Form.Item name='jobTime'>
+            <Select
+              size='large'
+              className='w-full'
+              showSearch
+              placeholder='Tiempo o Turno'
+              optionFilterProp='children'
+              defaultValue={serachParamsObj.jobTime}
+              filterOption={filterOption}
+              options={JOB_OPTIONS.time}
+            />
+          </Form.Item>
           {/* <DatePicker.RangePicker size='large' className='w-full' />
           <Select
             size='large'
@@ -83,29 +93,41 @@ const FilterAsideJobs = () => {
               // filterOption={filterOption}={filterOption={filterOption}}
             options={JOB_OPTIONS.types}
           /> */}
-          <Select
-            size='large'
-            className='w-full min-w-[200px]'
-            showSearch
-            placeholder='Área'
-            optionFilterProp='children'
-              // onChange={onChange}
-              // onSearch={onSearch}
-            filterOption={filterOption}
-            options={JOB_OPTIONS.areas}
-          />
-          <Select
-            size='large'
-            className='w-full'
-            showSearch
-            placeholder='Nivel de experiencia'
-            optionFilterProp='children'
-              // onChange={onChange}
-              // onSearch={onSearch}
-            filterOption={filterOption}
-            options={JOB_OPTIONS.seniority}
-          />
-        </Space>
+          {/* <Form.Item name='jobArea'>
+            <Select
+              size='large'
+              className='w-full min-w-[200px]'
+              showSearch
+              placeholder='Área'
+              optionFilterProp='children'
+              defaultValue={serachParamsObj.jobArea}
+              filterOption={filterOption}
+              options={JOB_OPTIONS.areas}
+            />
+          </Form.Item> */}
+          <Form.Item name='seniority'>
+            <Select
+              size='large'
+              className='w-full'
+              showSearch
+              placeholder='Nivel de experiencia'
+              optionFilterProp='children'
+              defaultValue={serachParamsObj.seniority}
+              filterOption={filterOption}
+              options={JOB_OPTIONS.seniority}
+            />
+          </Form.Item>
+        </Form>
+
+        <Button
+          type='primary'
+          shape='round'
+          icon={<FontAwesomeIcon icon={faTrash} />}
+          className='!bg-red-500 !text-white !font-semibold !mx-auto'
+          onClick={() => {
+            router.push(pathname)
+          }}
+        />
       </Card>
     </aside>
   )

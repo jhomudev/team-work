@@ -1,14 +1,11 @@
-import { logotipo } from '@/libs/media'
 import { Button } from 'antd'
-import Image from 'next/image'
 import Link from 'next/link'
+import LogoHeader from './LogoHeader'
 
-const HeaderNavContentNoAuth = () => {
+function HeaderNavContentNoAuth () {
   return (
     <>
-      <div className='logo relative w-[140px] h-[35px]'>
-        <Image src={logotipo} alt='logo team work' fill />
-      </div>
+      <LogoHeader />
       <nav className=' ml-auto'>
         <ul className='flex items-center gap-3'>
           <li>

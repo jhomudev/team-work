@@ -14,7 +14,7 @@ export const GET = async (req) => {
     SELECT 
       apps.jobId, apps.seekerId, apps.status, apps.createdAt, apps.updatedAt,
       j.title as jobTitle, j.description as jobDescription, j.status as jobStatus,
-    CONCAT(seek.names ," ", seek.lastnames) as seeker, seek.seekerId
+    CONCAT(seek.names ," ", seek.lastnames) as seeker, seek.seekerId, seek.title as seekerTitle
     FROM applications apps
     INNER JOIN jobs j ON apps.jobId=j.jobId
     INNER JOIN seekers seek ON apps.seekerId=seek.seekerId
@@ -34,7 +34,8 @@ export const GET = async (req) => {
       },
       seeker: {
         id: application.seekerId,
-        names: application.seeker
+        names: application.seeker,
+        title: application.seekerTitle
       }
     }))
     return NextResponse.json({

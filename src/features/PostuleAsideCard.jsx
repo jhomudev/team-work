@@ -3,7 +3,7 @@ import { faDollar } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Button, Card, Form, Input } from 'antd'
 
-const PostuleAsideCard = () => {
+function PostuleAsideCard () {
   return (
     <aside className='h-full flex-[1_0_300px]'>
       <Card className='w-full'>

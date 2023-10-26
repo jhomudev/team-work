@@ -1,25 +1,21 @@
 'use client'
-import useRegisterData from '@/hooks/useRegisterData'
-import { jobAreas } from '@/static/enums'
-import { Button, Form, Input, Select, Steps, notification } from 'antd'
-import TextArea from 'antd/es/input/TextArea'
 import { useEffect, useState } from 'react'
-import { getDataOptions } from './FilterAsideJobs'
-import { useForm } from 'antd/es/form/Form'
-import { signIn } from 'next-auth/react'
 import { useRouter } from 'next/navigation'
 import axios from 'axios'
-const configInput = {
-  rules: [{ required: true, message: 'Complete este campo' }]
-}
+import { signIn } from 'next-auth/react'
+import { Button, Form, Input, Select, Steps, notification } from 'antd'
+import { useForm } from 'antd/es/form/Form'
+import useRegisterData from '@/hooks/useRegisterData'
+import { RULES_INPUT_ANT, filterOption } from '@/libs/ant'
+import { JOB_OPTIONS } from '@/libs/utils/contants'
+import Title from 'antd/es/typography/Title'
 
-const RegisterFormPersonData = ({ changeNextStep }) => {
+function RegisterFormPersonData ({ changeNextStep }) {
   const { updateRegisterData, registerData } = useRegisterData()
   const [form] = useForm()
 
-  const handleSubmitForm = (formData) => {
-    updateRegisterData(formData)
-    changeNextStep()
+  const handleChangeValuesForm = (changedValues, _allValues) => {
+    updateRegisterData(changedValues)
   }
 
   useEffect(() => {
@@ -33,21 +29,20 @@ const RegisterFormPersonData = ({ changeNextStep }) => {
 
   return (
     <Form
+      scrollToFirstError
       form={form}
       layout='vertical'
-      onFinish={handleSubmitForm}
+      onValuesChange={handleChangeValuesForm}
+      onFinish={() => { changeNextStep() }}
     >
       <div className='flex gap-x-5 flex-wrap'>
-        <Form.Item {...configInput} className='flex-[1_0_200px]' id='names' name='names' label='Nombres'>
+        <Form.Item rules={[RULES_INPUT_ANT.required]} className='flex-[1_0_200px]' name='names' label='Nombres'>
           <Input size='large' placeholder='Ingresa tus nombres' />
         </Form.Item>
-        <Form.Item {...configInput} className='flex-[1_0_200px]' name='lastnames' label='Apellidos'>
+        <Form.Item rules={[RULES_INPUT_ANT.required]} className='flex-[1_0_200px]' name='lastnames' label='Apellidos'>
           <Input size='large' placeholder='Ingresa tus apellidos' />
         </Form.Item>
-        {/* <Form.Item {...configInput} className='flex-[1_0_200px]' name='phone' label='Teléfono'>
-          <Input size='large' placeholder='Ingresa tus teléfono' />
-        </Form.Item> */}
-        <Form.Item {...configInput} className='flex-[1_0_200px]' name='email' label='Email'>
+        <Form.Item rules={[RULES_INPUT_ANT.required, RULES_INPUT_ANT.email]} className='flex-[1_0_200px]' name='email' label='Email'>
           <Input size='large' type='email' placeholder='Ingresa tu correo electrónico' />
         </Form.Item>
       </div>
@@ -58,15 +53,13 @@ const RegisterFormPersonData = ({ changeNextStep }) => {
   )
 }
 
-const RegisterFormAbout = ({ changeNextStep }) => {
+function RegisterFormAbout ({ changeNextStep }) {
   const { updateRegisterData, registerData } = useRegisterData()
   const [form] = useForm()
 
-  const handleSubmitForm = (formData) => {
-    updateRegisterData(formData)
-    changeNextStep()
+  const handleChangeValuesForm = (changedValues, _allvalues) => {
+    updateRegisterData(changedValues)
   }
-  const filterOption = (input, option) => (option?.label ?? '').toLowerCase().includes(input.toLowerCase())
 
   useEffect(() => {
     form.setFieldsValue({
@@ -79,25 +72,26 @@ const RegisterFormAbout = ({ changeNextStep }) => {
     <Form
       form={form}
       layout='vertical'
-      onFinish={handleSubmitForm}
+      onValuesChange={handleChangeValuesForm}
+      onFinish={() => { changeNextStep() }}
     >
       <div>
-        <Form.Item {...configInput} className='flex-[1_0_200px]' name='area' label='Área de trabajo'>
+        <Form.Item rules={[RULES_INPUT_ANT.required]} className='flex-[1_0_200px]' name='area' label='Área de trabajo'>
           <Select
             size='large'
             showSearch
-            placeholder='Select a person'
+            placeholder='Selecciona un área'
             optionFilterProp='children'
             filterOption={filterOption}
             defaultValue={registerData.area}
-            options={getDataOptions(jobAreas)}
+            options={JOB_OPTIONS.areas}
           />
         </Form.Item>
-        <Form.Item {...configInput} className='flex-[1_0_200px]' name='title' label='Título profesional'>
+        <Form.Item rules={[RULES_INPUT_ANT.required]} className='flex-[1_0_200px]' name='title' label='Título profesional'>
           <Input size='large' placeholder='Ingeniero se software, Administrador, etc' />
         </Form.Item>
-        <Form.Item {...configInput} className='flex-[1_0_200px]' name='description' label='Descripción profesional'>
-          <TextArea placeholder='Soy un ...' rows={4} autoSize={{ minRows: 2, maxRows: 6 }} />
+        <Form.Item className='flex-[1_0_200px]' name='description' label='Descripción profesional'>
+          <Input.TextArea placeholder='Soy un ...' autoSize={{ minRows: 4, maxRows: 7 }} />
         </Form.Item>
       </div>
       <Form.Item className='w-full sm:w-min !ml-auto'>
@@ -107,15 +101,14 @@ const RegisterFormAbout = ({ changeNextStep }) => {
   )
 }
 
-const RegisterFormAccount = () => {
+function RegisterFormAccount () {
   const { updateRegisterData, registerData } = useRegisterData()
   const [loading, setLoading] = useState(false)
   const router = useRouter()
   const [form] = useForm()
 
-  const handleSubmitForm = async (formData) => {
+  const handleSubmitForm = async (_formData) => {
     setLoading(true)
-    updateRegisterData(formData)
     const reqAPI = await axios.post('/api/auth/register/seeker', registerData)
     const responseAPI = reqAPI.data
     setLoading(false)
@@ -144,6 +137,10 @@ const RegisterFormAccount = () => {
     })
   }
 
+  const handleChangeValuesForm = (changedValues, _allValues) => {
+    updateRegisterData(changedValues)
+  }
+
   useEffect(() => {
     form.setFieldsValue({
       userHandle: registerData?.userHandle,
@@ -156,16 +153,26 @@ const RegisterFormAccount = () => {
     <Form
       form={form}
       layout='vertical'
+      onValuesChange={handleChangeValuesForm}
       onFinish={handleSubmitForm}
     >
       <div className='flex gap-x-5 flex-wrap'>
-        <Form.Item {...configInput} className='flex-[1_0_200px]' name='userHandle' label='Identificador de usuario'>
-          <Input size='large' placeholder='josecarlos2003' />
+        <Form.Item
+          rules={[RULES_INPUT_ANT.required, {
+            pattern: '^[A-Za-z0-9]*$',
+            message: 'Solo se aceptan mayusculas, minusculas, números, No espacios o carácteres especiales'
+          }]}
+          className='flex-[1_0_200px]'
+          name='userHandle'
+          label='Identificador de usuario'
+          hasFeedback
+        >
+          <Input size='large' placeholder='Ejm: josecarlos2003' />
         </Form.Item>
-        <Form.Item {...configInput} className='flex-[1_0_200px]' name='password' label='Contraseña'>
+        <Form.Item rules={[RULES_INPUT_ANT.required]} className='flex-[1_0_200px]' name='password' label='Contraseña' hasFeedback>
           <Input.Password size='large' placeholder='Crea tu contraseña' />
         </Form.Item>
-        <Form.Item {...configInput} className='flex-[1_0_200px]' name='confirmPassword' label='Confirmar contraseña'>
+        <Form.Item rules={RULES_INPUT_ANT.confirmPassword} className='flex-[1_0_200px]' name='confirmPassword' label='Confirmar contraseña' hasFeedback>
           <Input.Password size='large' placeholder='Vuelve a escribir tu contraseña' />
         </Form.Item>
       </div>
@@ -176,9 +183,8 @@ const RegisterFormAccount = () => {
   )
 }
 
-const RegisterForm = () => {
+function SeekerRegisterForm () {
   const [currentStep, setCurrentStep] = useState(0)
-  const [stepPassed, setStepPassed] = useState(0)
   const { registerData } = useRegisterData()
   const itemsSteps = [
     {
@@ -187,17 +193,18 @@ const RegisterForm = () => {
     },
     {
       title: 'Sobre ti',
+      disabled: !(registerData.names && registerData.lastnames && registerData.email),
       form: RegisterFormAbout
     },
     {
       title: 'Cuenta',
+      disabled: !(registerData.area && registerData.title && registerData.description),
       form: RegisterFormAccount
     }
   ]
 
   const handleChangeStep = (current) => {
     setCurrentStep(current)
-    setStepPassed(current)
   }
   const changeNextStep = () => {
     setCurrentStep(prev => prev + 1)
@@ -206,15 +213,10 @@ const RegisterForm = () => {
   const currentItemStep = itemsSteps[currentStep]
   const { form: FormStep } = currentItemStep
 
-  useEffect(() => {
-    console.log({ registerData })
-    console.log({ stepPassed, currentStep })
-  }, [registerData, stepPassed, currentStep])
-
   return (
     <div className='w-[min(100%,600px)]'>
-      <h1 className='text-xl font-semibold text-gray-700'>Crea tu cuenta y encuentra tu empleo a tiempo</h1>
-      <br />
+      <Title className='!text-2xl !text-gray-700'>Crea tu cuenta y encuentra tu empleo a tiempo</Title>
+
       <Steps
         type='navigation'
         current={currentStep}
@@ -226,4 +228,4 @@ const RegisterForm = () => {
     </div>
   )
 }
-export default RegisterForm
+export default SeekerRegisterForm

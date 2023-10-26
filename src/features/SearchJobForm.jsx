@@ -4,7 +4,7 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Button, Form, Input, Select } from 'antd'
 
-const SearchJobForm = () => {
+function SearchJobForm () {
   return (
     <Form className='w-[min(100%,600px)]'>
       <Form.Item>
@@ -41,7 +41,9 @@ const SearchJobForm = () => {
           ]}
         />
       </Form.Item>
-      <Button block type='primary' size='large' htmlType='submit'>Buscar trabajo</Button>
+      <Form.Item label=''>
+        <Button block type='primary' size='large' htmlType='submit'>Buscar trabajo</Button>
+      </Form.Item>
     </Form>
   )
 }

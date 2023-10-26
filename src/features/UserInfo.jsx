@@ -2,7 +2,7 @@
 
 import { useSession } from 'next-auth/react'
 
-const UserInfo = () => {
+function UserInfo () {
   const { data: session } = useSession()
   return (
     <div>

@@ -1,9 +1,9 @@
 import './globals.css'
 import StyledComponentsRegistry from '@/context/AntRegistry'
-import { Inter } from 'next/font/google'
+import { Nunito } from 'next/font/google'
 import SessionAuthProvider from '@/context/SessionProvider'
 
-const inter = Inter({ subsets: ['latin'] })
+const nunito = Nunito({ subsets: ['latin'] })
 
 export const metadata = {
   title: 'TeamWork',
@@ -13,7 +13,7 @@ export const metadata = {
 export default function RootLayout ({ children }) {
   return (
     <html lang='en'>
-      <body className={inter.className}>
+      <body className={nunito.className}>
         <div className='w-full min-h-screen bg-gray-100'>
           <StyledComponentsRegistry>
             <SessionAuthProvider>

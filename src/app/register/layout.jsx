@@ -1,9 +1,13 @@
+import HeaderNav from '@/components/HeaderNav'
 import RegisterProvider from '@/context/RegisterContext'
 
-const RegisterLayout = ({ children }) => {
+function RegisterLayout ({ children }) {
   return (
     <RegisterProvider>
-      {children}
+      <HeaderNav />
+      <div className='container-block min-h-[calc(100vh_-_80px)] py-10 flex gap-5'>
+        {children}
+      </div>
     </RegisterProvider>
   )
 }

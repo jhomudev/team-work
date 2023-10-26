@@ -18,7 +18,7 @@ export const POST = async (req) => {
 
     if (resDBUser.insertId) {
       const userId = resDBUser.insertId
-      const resDBEntity = await conn.query('INSERT INTO seekers SET ?', { name, description, area, userId })
+      const resDBEntity = await conn.query('INSERT INTO employers SET ?', { name, description, area, userId })
 
       if (resDBEntity.insertId) {
         return NextResponse.json({

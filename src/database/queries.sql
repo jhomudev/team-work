@@ -769,6 +769,7 @@ SELECT
   userId,
   userHandle,
   email,
+  password,
   type
 FROM
   users

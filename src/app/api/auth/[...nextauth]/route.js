@@ -15,6 +15,7 @@ export const authOptions = {
         const auth = await res.data
 
         // If no error and we have user data, return it
+        console.log(auth)
         if (auth.ok) return auth
         // Return null if user data could not be retrieved
         // throw auth

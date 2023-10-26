@@ -1,7 +1,10 @@
+// import { getLeftTime } from '@/libs/utils/dateFunctions'
 import { Card } from 'antd'
+import Paragraph from 'antd/es/typography/Paragraph'
+import Text from 'antd/es/typography/Text'
 import Link from 'next/link'
 
-const JobsRelatedList = () => {
+function JobsRelatedList () {
   return (
     <section>
       <h2 className='text-lg font-medium text-gray-700 mb-3'>Trabajos relacionados</h2>
@@ -9,12 +12,18 @@ const JobsRelatedList = () => {
         <li>
           <Link href='/panel/jobs/1'>
             <Card hoverable>
-              <strong className='font-semibold text-blue-500'>Titulo del tarbajo</strong><br />
+              <Text strong className='font-semibold !text-blue-500'>Titulo del tarbajo</Text><br />
               <small>
                 <span className='font-semibold text-slate-800'>Enbter Inc.</span>&nbsp;-&nbsp;
-                Publicado hace 3 días
+                Publicado 3 dias
+                {/* Publicado {getLeftTime(job.createdAt)} */}
               </small>
-              <p className='text-sm text-gray-600 line-clamp-2'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, quaerat. Rem sapiente, similique ea perferendis reiciendis fuga, pariatur distinctio explicabo rerum dolorem nostrum sed expedita esse odio accusantium nobis modi.</p>
+              <Paragraph ellipsis={{
+                rows: 2,
+                expandable: false
+              }}
+              >Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, quaerat. Rem sapiente, similique ea perferendis reiciendis fuga, pariatur distinctio explicabo rerum dolorem nostrum sed expedita esse odio accusantium nobis modi.
+              </Paragraph>
             </Card>
           </Link>
         </li>

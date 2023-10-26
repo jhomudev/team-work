@@ -77,7 +77,7 @@ CREATE TABLE
     jobMode VARCHAR(50) NOT NULL,
     jobType VARCHAR(50) NOT NULL,
     jobTime VARCHAR(50) NOT NULL,
-    status VARCHAR(50) NOT NULL,
+    status VARCHAR(50) NOT NULL DEFAULT 'Publicado',
     employerId INT NOT NULL,
     createdAt TIMESTAMP NOT NULL DEFAULT NOW(),
     updatedAt TIMESTAMP NOT NULL DEFAULT NOW() ON UPDATE NOW(),

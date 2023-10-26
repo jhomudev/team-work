@@ -2,7 +2,7 @@
 export const DEFAULT_PARAMS = {
   rowsPerPage: 10,
   page: 1,
-  sort: 'ASC'
+  sort: 'DESC'
 }
 
 function getQueryParams ({ URLSearchParams, paramsCols = [], likeColumn, orderByColumn }) {
@@ -28,7 +28,8 @@ function getQueryParams ({ URLSearchParams, paramsCols = [], likeColumn, orderBy
     const queryArray = []
     for (const [property, value] of paramsArray) {
       if (isAParamCol(property) && value) {
-        queryArray.push(`${typeof value === 'string' ? `LOWER(${property})=${`"${value}"`}` : value}`)
+        const isValuesNumeric = isNaN(parseFloat(value))
+        queryArray.push(isValuesNumeric ? `LOWER(${property})=${`"${value}"`}` : `${property}=${`${value}`}`)
       }
     }
     if (hasQLike) queryArray.push(queryLike)
@@ -36,6 +37,7 @@ function getQueryParams ({ URLSearchParams, paramsCols = [], likeColumn, orderBy
   })()
   const queryParamsComplete = `${queryWhere} ${queryOrderBy} ${queryPage}`
   const queryParamsNoLimit = `${queryWhere} ${queryOrderBy}`
+
   return {
     queryParamsComplete,
     queryParamsNoLimit

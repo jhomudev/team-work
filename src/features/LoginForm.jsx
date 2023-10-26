@@ -2,12 +2,12 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Button, Form, Input, notification } from 'antd'
 import { faLock, faUser } from '@fortawesome/free-solid-svg-icons'
-// import axios from 'axios'
 import { useRouter } from 'next/navigation'
 import { signIn } from 'next-auth/react'
 import { useState } from 'react'
+import Title from 'antd/es/typography/Title'
 
-const LoginForm = () => {
+function LoginForm () {
   const router = useRouter()
   const [loading, setLoading] = useState(false)
 
@@ -17,7 +17,8 @@ const LoginForm = () => {
     const responseNextAuth = await signIn('credentials', {
       email,
       password,
-      redirect: false
+      redirect: false,
+      callbackUrl: '/panel'
     })
     if (responseNextAuth.error) {
       setLoading(false)
@@ -27,12 +28,13 @@ const LoginForm = () => {
       })
       return
     }
-    router.replace('/panel/jobs')
+
+    router.replace('/panel')
   }
 
   return (
     <div className='w-[min(100%,400px)]'>
-      <h1 className='text-xl text-gray-600 font-semibold'>Ingrese a su cuenta</h1><br />
+      <Title className='!text-2xl !text-gray-600'>Ingrese a su cuenta</Title><br />
       <Form
         requiredMark={false}
         onFinish={handleSubmitForm}

@@ -7,7 +7,7 @@ export const GET = async (req) => {
     const queryParams = getQueryParams({
       URLSearchParams: req.nextUrl.searchParams,
       likeColumn: 'j.title',
-      paramsCols: ['seniority', 'jobMode', 'jobtype', 'jobTime'],
+      paramsCols: ['seniority', 'jobMode', 'jobType', 'jobTime', 'j.employerId'], // params to filter on DB
       orderByColumn: 'j.jobId'
     })
     const { queryParamsComplete, queryParamsNoLimit } = queryParams
@@ -69,7 +69,7 @@ export const POST = async (req) => {
   try {
     const dataJob = await req.json()
 
-    const { title, description, openings, seniority, jobMode, jobType, jobTime, status, employerId } = dataJob
+    const { title, description, openings, seniority, jobMode, jobType, jobTime/* , status */, employerId } = dataJob
     const reqDB = await conn.query('INSERT INTO jobs SET ?', {
       title,
       description,
@@ -78,7 +78,7 @@ export const POST = async (req) => {
       jobMode,
       jobType,
       jobTime,
-      status,
+      // status,
       employerId
     })
     if (reqDB.affectedRows > 0) {
@@ -94,7 +94,7 @@ export const POST = async (req) => {
           jobMode,
           jobType,
           jobTime,
-          status,
+          // status,
           employerId
         }
       })
@@ -102,6 +102,8 @@ export const POST = async (req) => {
     return NextResponse.json({
       ok: false,
       message: 'No se pudo crear el trabajo'
+    }, {
+      status: 500
     })
   } catch (error) {
     return NextResponse.json({
