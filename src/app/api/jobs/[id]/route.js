@@ -6,7 +6,7 @@ export const GET = async (_, { params }) => {
   const query = `
   SELECT  
   j.jobId, j.title, j.description, j.openings, j.seniority, j.jobMode, j.jobType, j.jobTime, j.status, j.createdAt, j.updatedAt, 
-  em.employerId, em.name as employer,
+  em.employerId, em.name as employer, em.description as employerDescription, em.area as employerArea,
   u.userHandle
   FROM jobs j
   INNER JOIN employers em ON j.employerId = em.employerId
@@ -28,6 +28,8 @@ export const GET = async (_, { params }) => {
     employer: {
       id: data.employerId,
       name: data.employer,
+      description: data.employerDescription,
+      area: data.employerArea,
       handle: data.userHandle
     }
   }

@@ -1,8 +1,8 @@
 import { getLeftTime } from '@/libs/utils/dateFunctions'
 import { faClock, faHandPointUp } from '@fortawesome/free-regular-svg-icons'
-import { faChair, faFileContract, faPlaneArrival } from '@fortawesome/free-solid-svg-icons'
+import { faChair, faFileContract, faPlaneArrival, faSliders } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { Breadcrumb, Card, Divider, Flex } from 'antd'
+import { Breadcrumb, Card, Divider, Flex, Tooltip } from 'antd'
 import Paragraph from 'antd/es/typography/Paragraph'
 import Title from 'antd/es/typography/Title'
 import Text from 'antd/es/typography/Text'
@@ -39,7 +39,7 @@ const JobEmployerPage = async ({ params }) => {
 
   return (
     <Flex gap={10} vertical>
-      <Card className='w-full'>
+      <Card className='relative w-full'>
         <Breadcrumb
           className='w-full'
           items={[
@@ -51,6 +51,11 @@ const JobEmployerPage = async ({ params }) => {
             }
           ]}
         />
+        <Tooltip placement='top' title='Gestionar'>
+          <Link href={`/panel/employer/jobs/actions/${jobId}`} className='absolute top-7 right-7 text-gray-400 hover:text-gray-700'>
+            <FontAwesomeIcon className='w-4 h-4' icon={faSliders} />
+          </Link>
+        </Tooltip>
         <Title className='!text-blue-600'>{job.title}</Title>
         <small className='text-gray-500'>Publicado {getLeftTime(job.createdAt)}</small>
         <Title level={3}>Descripción</Title>

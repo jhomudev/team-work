@@ -7,7 +7,7 @@ export const GET = async (req) => {
     const queryParams = getQueryParams({
       URLSearchParams: req.nextUrl.searchParams,
       likeColumn: 'j.title',
-      paramsCols: ['seniority', 'jobMode', 'jobType', 'jobTime', 'j.employerId'], // params to filter on DB
+      paramsCols: ['seniority', 'jobMode', 'jobType', 'jobTime', 'j.employerId', 'status'], // params to filter on DB
       orderByColumn: 'j.jobId'
     })
     const { queryParamsComplete, queryParamsNoLimit } = queryParams

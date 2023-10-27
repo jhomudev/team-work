@@ -6,7 +6,7 @@ export const GET = async (req) => {
   try {
     const queryParams = getQueryParams({
       URLSearchParams: req.nextUrl.searchParams,
-      orderByColumn: 'apps.createdAt',
+      orderByColumn: 'apps.status',
       paramsCols: ['apps.jobId', 'apps.seekerId', 'apps.status']
     })
     const { queryParamsComplete } = queryParams
@@ -75,6 +75,36 @@ export const POST = async (req) => {
     return NextResponse.json({
       ok: false,
       message: 'No se pudo registrar la aplicación al puesto'
+    })
+  } catch (error) {
+    return NextResponse.json({
+      ok: false,
+      message: 'Algo no ocurrió bien',
+      error
+    }, {
+      status: 400
+    })
+  }
+}
+
+export const DELETE = async (req) => {
+  try {
+    const dataApplication = await req.json()
+    const { jobId, seekerId } = dataApplication
+    const reqDB = await conn.query('DELETE FROM applications WHERE jobId = ? AND seekerId = ?', [jobId, seekerId])
+    if (reqDB.affectedRows > 0) {
+      return NextResponse.json({
+        ok: true,
+        message: 'Aplicación eliminada',
+        deletedRow: {
+          jobId,
+          seekerId
+        }
+      })
+    }
+    return NextResponse.json({
+      ok: false,
+      message: 'No se pudo eliminar la aplicación'
     })
   } catch (error) {
     return NextResponse.json({

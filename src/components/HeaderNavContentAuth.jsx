@@ -2,17 +2,16 @@
 import { Button, Form, Input } from 'antd'
 import { signOut } from 'next-auth/react'
 import Link from 'next/link'
-import { usePathname, useRouter, useSearchParams } from 'next/navigation'
+import { useRouter, useSearchParams } from 'next/navigation'
 import LogoHeader from './LogoHeader'
 import updateURLWithParams from '@/libs/utils/updateURLWithParams'
 
 function HeaderNavContentAuth () {
   const router = useRouter()
-  const pathname = usePathname()
   const searchParams = useSearchParams()
   const handleSubmitForm = (data) => {
     const { keyword } = data
-    router.push(`${pathname}?${updateURLWithParams(searchParams, {
+    router.push(`http://localhost:3000/panel/jobs?${updateURLWithParams(searchParams, {
       q: keyword
     })}`)
   }

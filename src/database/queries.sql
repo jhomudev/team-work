@@ -660,14 +660,11 @@ FROM
   INNER JOIN employers ON jobs.employerId = employers.employerId -- WHERE
   --   jobs.title LIKE "%Ingeniero%"
 ORDER BY
-  jobs.jobId ASC
-LIMIT
-  10
-OFFSET
-  10;
-
-
---update job
+  jobs.jobId ASC -- LIMIT
+  --   10
+  -- OFFSET
+  --   10;
+  --update job
 UPDATE
   jobs
 SET
@@ -754,11 +751,10 @@ FROM
   applications apps
   INNER JOIN jobs j ON apps.jobId = j.jobId
   INNER JOIN seekers seek ON apps.seekerId = seek.seekerId
-WHERE
-  apps.jobId = 18;
-
-
-SHOW KEYS
+ORDER BY
+  apps.status ASC -- WHERE
+  --   apps.jobId = 18;
+  SHOW KEYS
 FROM
   applications
 WHERE
