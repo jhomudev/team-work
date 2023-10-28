@@ -20,9 +20,10 @@ function RegisterFormEmployerData ({ changeNextStep }) {
 
   useEffect(() => {
     form.setFieldsValue({
-      name: registerData?.name,
-      email: registerData?.email,
-      description: registerData?.description
+      name: registerData.name,
+      email: registerData.email,
+      description: registerData.description,
+      area: registerData.area
     })
   }, [form, registerData])
 
@@ -105,9 +106,9 @@ function RegisterFormAccount () {
 
   useEffect(() => {
     form.setFieldsValue({
-      userHandle: registerData?.userHandle,
-      password: registerData?.password,
-      confirmPassword: registerData?.confirmPassword
+      userHandle: registerData.userHandle,
+      password: registerData.password,
+      confirmPassword: registerData.confirmPassword
     })
   }, [form, registerData])
 

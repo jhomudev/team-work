@@ -41,6 +41,7 @@ async function JobPage ({ params }) {
   return (
     <div className='flex gap-3 flex-col'>
       <Breadcrumb
+        separator='>'
         className='w-full'
         items={[
           {

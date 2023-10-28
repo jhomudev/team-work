@@ -4,7 +4,7 @@ import { NextResponse } from 'next/server'
 
 export const POST = async (req) => {
   try {
-    const type = userTypes.seeker
+    const type = userTypes.employer
     const {
     // user data
       email, password, userHandle,

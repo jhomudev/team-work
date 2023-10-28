@@ -20,10 +20,10 @@ function RegisterFormPersonData ({ changeNextStep }) {
 
   useEffect(() => {
     form.setFieldsValue({
-      names: registerData?.names,
-      lastnames: registerData?.lastnames,
-      phone: registerData?.phone,
-      email: registerData?.email
+      names: registerData.names,
+      lastnames: registerData.lastnames,
+      phone: registerData.phone,
+      email: registerData.email
     })
   }, [form, registerData])
 
@@ -63,8 +63,9 @@ function RegisterFormAbout ({ changeNextStep }) {
 
   useEffect(() => {
     form.setFieldsValue({
-      title: registerData?.title,
-      description: registerData?.description
+      title: registerData.title,
+      description: registerData.description,
+      area: registerData.area
     })
   }, [form, registerData])
 
@@ -90,7 +91,7 @@ function RegisterFormAbout ({ changeNextStep }) {
         <Form.Item rules={[RULES_INPUT_ANT.required]} className='flex-[1_0_200px]' name='title' label='Título profesional'>
           <Input size='large' placeholder='Ingeniero se software, Administrador, etc' />
         </Form.Item>
-        <Form.Item className='flex-[1_0_200px]' name='description' label='Descripción profesional'>
+        <Form.Item rules={[RULES_INPUT_ANT.required]} className='flex-[1_0_200px]' name='description' label='Descripción profesional'>
           <Input.TextArea placeholder='Soy un ...' autoSize={{ minRows: 4, maxRows: 7 }} />
         </Form.Item>
       </div>
@@ -143,9 +144,9 @@ function RegisterFormAccount () {
 
   useEffect(() => {
     form.setFieldsValue({
-      userHandle: registerData?.userHandle,
-      password: registerData?.password,
-      confirmPassword: registerData?.confirmPassword
+      userHandle: registerData.userHandle,
+      password: registerData.password,
+      confirmPassword: registerData.confirmPassword
     })
   }, [form, registerData])
 

@@ -1,9 +1,11 @@
-import { Breadcrumb, Button, Card, Divider, Flex } from 'antd'
+import { Breadcrumb, Card, Divider, Tag } from 'antd'
 import Title from 'antd/es/typography/Title'
 import Text from 'antd/es/typography/Text'
 import axios from 'axios'
 import EditJobForm from '@/features/EditJobForm'
 import Link from 'next/link'
+import { colorStatus } from '@/libs/ant'
+import ChangeStatesButtons from '@/features/ChangeStatesButtons'
 
 const getDataJob = async (jobId) => {
   const resAPI = await axios(`http://localhost:3000/api/jobs/${jobId}`)
@@ -17,6 +19,7 @@ async function ActionsJobPage ({ params }) {
   return (
     <Card>
       <Breadcrumb
+        separator='>'
         className='w-full'
         items={[
           {
@@ -33,14 +36,11 @@ async function ActionsJobPage ({ params }) {
       <Title level={3} className='!text-blue-500'>Gestión de empleo</Title>
       <Text>Gestiona las opciones del anuncio de empleo </Text>
       <Title level={4} className='!text-pink-500'>{job.title}</Title>
+      <Text>Estado del anuncio: <Tag color={colorStatus[job.status]}>{job.status}</Tag></Text>
       <Title level={5}>Acciones rápidas</Title>
-      <Flex gap={10}>
-        <Button>Pasar a evaluación</Button>
-        <Button danger>Finalizar anuncio</Button>
-      </Flex>
+      <ChangeStatesButtons jobData={job} />
       <Divider orientation='left' orientationMargin={0}><Title level={5}>Editar anuncio </Title></Divider>
       <EditJobForm dataJob={job} />
-
     </Card>
   )
 }

@@ -19,7 +19,7 @@ export const GET = async (req) => {
 
     const [totalSeekers] = await conn.query('SELECT COUNT(seekerId) as totalSeekers FROM seekers')
     const dataFormated = data.map(seeker => ({
-      seekerId: seeker.seeker,
+      seekerId: seeker.seekerId,
       names: seeker.names,
       lastnames: seeker.lastnames,
       description: seeker.description,

@@ -51,13 +51,13 @@ async function EmployerPanelPage () {
         className='flex flex-col'
         bodyStyle={{ display: 'flex', flexDirection: 'column' }}
         title={
-          <div className='flex items-center gap-3'>
+          <div className='flex items-center justify-between gap-3'>
             <h2 className='text-lg font-medium text-gray-700'>Mis anuncios de empleo</h2>
-            <Link href='/panel/employer/jobs/new' className='ml-auto'>
+            <Link href='/panel/employer/jobs/new'>
               <Button className='text-white' type='primary' icon={<FontAwesomeIcon className='w-3 h-3' icon={faPlus} />}>Nuevo</Button>
             </Link>
           </div>
-      }
+        }
       >
         {/* <Tabs defaultActiveKey='1' items={itemsTab} /> */}
         <JobsPerEmployerList jobs={jobs} />

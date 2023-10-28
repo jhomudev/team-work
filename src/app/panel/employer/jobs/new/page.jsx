@@ -8,6 +8,7 @@ async function NewJobPage () {
   return (
     <Card>
       <Breadcrumb
+        separator='>'
         className='w-full'
         items={[
           {

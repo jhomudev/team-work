@@ -3,17 +3,17 @@ import { NextResponse } from 'next/server'
 
 export const GET = async (_, { params }) => {
   try {
-    const seekerId = params.id
+    const seekerHandle = params.seekerHandle
     const query = `
     SELECT sek.seekerId ,sek.names ,sek.lastnames ,sek.description ,sek.area ,sek.title ,sek.userId ,sek.createdAt,sek.updatedAt, u.userHandle, u.email as userEmail
     FROM seekers sek
     INNER JOIN users u ON sek.userId=u.userId
-    WHERE sek.seekerId = ?`
-    const [data] = await conn.query(query, [seekerId])
+    WHERE u.userHandle = ?`
+    const [data] = await conn.query(query, [seekerHandle])
 
     if (data) {
       return NextResponse.json({
-        seekerId: data.data,
+        seekerId: data.seekerId,
         names: data.names,
         lastnames: data.lastnames,
         description: data.description,

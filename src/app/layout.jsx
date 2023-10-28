@@ -1,9 +1,13 @@
 import './globals.css'
 import StyledComponentsRegistry from '@/context/AntRegistry'
-import { Nunito } from 'next/font/google'
 import SessionAuthProvider from '@/context/SessionProvider'
+import { ConfigProvider } from 'antd'
+// import { Raleway } from 'next/font/google'
 
-const nunito = Nunito({ subsets: ['latin'] })
+// const raleway = Raleway({
+//   subsets: ['latin'],
+//   weight: ['400', '500', '600', '700', '800', '900']
+// })
 
 export const metadata = {
   title: 'TeamWork',
@@ -13,12 +17,19 @@ export const metadata = {
 export default function RootLayout ({ children }) {
   return (
     <html lang='en'>
-      <body className={nunito.className}>
+      <body>
         <div className='w-full min-h-screen bg-gray-100'>
           <StyledComponentsRegistry>
-            <SessionAuthProvider>
-              {children}
-            </SessionAuthProvider>
+            <ConfigProvider theme={{
+              token: {
+                // fontFamily: raleway.style.fontFamily
+              }
+            }}
+            >
+              <SessionAuthProvider>
+                {children}
+              </SessionAuthProvider>
+            </ConfigProvider>
           </StyledComponentsRegistry>
         </div>
       </body>

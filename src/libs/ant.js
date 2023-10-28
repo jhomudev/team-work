@@ -1,4 +1,15 @@
 // ? FUNCS ANT LIBRARY COMPONENTS
+
+import { jobStates } from '@/static/enums'
+
+// theme
+export const theme = {
+  token: {
+    fontSize: 16,
+    colorPrimary: '#52c41a'
+  }
+}
+
 // rules for inputs validations
 export const RULES_INPUT_ANT = {
   required: { required: true, message: 'Complete este campo' },
@@ -28,3 +39,12 @@ export const RULES_INPUT_ANT = {
 
 // To select component,  filter options when typing
 export const filterOption = (input, option) => (option?.label ?? '').toLowerCase().includes(input.toLowerCase())
+
+// the colors are defined by ant colors tag
+export const colorStatus = {
+  [jobStates.closed]: 'red',
+  [jobStates.inReview]: 'geekblue',
+  [jobStates.published]: 'green'
+  // [jobStates.pendingPublication]: '',
+  // [jobStates.receivingApplications]: '',
+}

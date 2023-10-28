@@ -18,7 +18,7 @@ function ListApplications ({ applications }) {
                 }}
               >{app.seeker.title}
               </Paragraph>
-              <Link href={`panel/seekers/${app.seeker.id}`} className='mt-2 ml-auto'>
+              <Link href={`/panel/seekers/${app.seeker.handle}`} className='mt-2 ml-auto'>
                 <Button className='!bg-pink-500 !text-white' danger>Ver perfil</Button>
               </Link>
             </Card>

@@ -41,6 +41,7 @@ const JobEmployerPage = async ({ params }) => {
     <Flex gap={10} vertical>
       <Card className='relative w-full'>
         <Breadcrumb
+          separator='>'
           className='w-full'
           items={[
             {

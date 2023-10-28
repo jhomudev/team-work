@@ -17,6 +17,7 @@ async function JobsPage ({ params, searchParams }) {
   return (
     <>
       <Breadcrumb
+        separator='>'
         className='w-full'
         items={[
           {

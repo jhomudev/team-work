@@ -687,6 +687,8 @@ FROM
   seekers;
 
 
+-- UPDATE seekers SET description ='Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime quia cumque magnam nobis incidunt exercitationem tempora tenetur deserunt at nesciunt, reprehenderit ipsa hic quae aliquam asperiores! Natus accusamus provident aliquid.'
+-- WHERE `seekerId` < 100
 SELECT
   sek.seekerId,
   sek.names,
