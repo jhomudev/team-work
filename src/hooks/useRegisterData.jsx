@@ -14,7 +14,6 @@ const useRegisterData = () => {
         ...dataToAdd
       }
     })
-    console.log('se actualizo el valor de registerData')
   }
 
   return {

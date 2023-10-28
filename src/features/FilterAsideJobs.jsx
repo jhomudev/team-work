@@ -34,7 +34,6 @@ function FilterAsideJobs () {
         <Text type='secondary' className='!mb-3'>Realiza tu búsqueda mediante los filtros, asi encontrarás el puesto que buscas mas rápido.</Text>
         <Form
           layout='horizontal' wrapperCol={4} onValuesChange={(changedValues, allValues) => {
-            console.log({ changedValues, allValues })
             const values = Object.fromEntries(
               Object.entries(allValues).filter(([_, valor]) => !!valor)
             )
@@ -50,9 +49,6 @@ function FilterAsideJobs () {
               showSearch
               placeholder='Modalidad de trabajo'
               optionFilterProp='children'
-              onChange={(value, option) => {
-                console.log({ value, option })
-              }}
               filterOption={filterOption}
               options={JOB_OPTIONS.modes}
             />

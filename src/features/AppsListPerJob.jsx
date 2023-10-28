@@ -11,9 +11,15 @@ function ListApplications ({ applications }) {
           <li key={app.seeker.id}>
             <Card bodyStyle={{ display: 'flex', flexDirection: 'column' }}>
               <Text strong className='!text-blue-500'>{app.seeker.names}</Text>
-              <Text type='secondary'>{app.seeker.title}</Text>
+              <Paragraph
+                type='secondary' ellipsis={{
+                  rows: 1,
+                  expandable: false
+                }}
+              >{app.seeker.title}
+              </Paragraph>
               <Link href={`panel/seekers/${app.seeker.id}`} className='mt-2 ml-auto'>
-                <Button className='!bg-pink-500 !text-white' danger size='large'>Ver perfil</Button>
+                <Button className='!bg-pink-500 !text-white' danger>Ver perfil</Button>
               </Link>
             </Card>
           </li>

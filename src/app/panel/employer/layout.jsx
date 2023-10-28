@@ -22,7 +22,7 @@ async function EmployerPanelLayout ({ children }) {
           a las postulaciones de los interesados.
         </Paragraph>
       </Card>
-      <aside className='flex-[1_0_360px] '>
+      <aside className='flex-[1_0_250px] '>
         <Card className='text-center' bodyStyle={{ display: 'flex', flexDirection: 'column', gap: '1rem', alignItems: 'center' }}>
           <Image style={{ borderRadius: '50%' }} src='https://unavatar.io/team' alt='perfil user' />
           <Text strong className='uppercase !text-pink-600' rootClassName=''>{data.name}</Text>

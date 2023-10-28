@@ -7,7 +7,7 @@ import Link from 'next/link'
 
 function JobsRelatedList () {
   return (
-    <aside className='flex-[1_0_130px]'>
+    <aside className='w-full sm:w-[min(50%,350px)]'>
       <Title level={4} className='!text-gray-700'>Trabajos relacionados</Title>
       <Space direction='vertical'>
         <Link href='/panel/jobs/1'>

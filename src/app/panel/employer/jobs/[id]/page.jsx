@@ -70,11 +70,11 @@ const JobEmployerPage = async ({ params }) => {
         </Paragraph>
         <Divider orientationMargin={0} orientation='left'><Title level={4}>Detalles</Title></Divider>
         <ul className='w-[min(100%,600px)] grid gap-5 grid-cols-[repeat(auto-fit,minmax(200px,1fr))]'>
-          <li className='flex items-center gap-2'><FontAwesomeIcon className='text-pink-600 w-3 h-3' icon={faPlaneArrival} /> {job.jobMode}</li>
-          <li className='flex items-center gap-2'><FontAwesomeIcon className='text-pink-600 w-3 h-3' icon={faFileContract} /> {job.jobType}</li>
-          <li className='flex items-center gap-2'><FontAwesomeIcon className='text-pink-600 w-3 h-3' icon={faClock} /> {job.jobTime}</li>
-          <li className='flex items-center gap-2'><FontAwesomeIcon className='text-pink-600 w-3 h-3' icon={faHandPointUp} /> {job.seniority}</li>
-          <li className='flex items-center gap-2'><FontAwesomeIcon className='text-pink-600 w-3 h-3' icon={faChair} /> {job.openings} vacantes</li>
+          <li className='flex items-center gap-2'><FontAwesomeIcon className='text-pink-600 w-5 h-5' icon={faPlaneArrival} /> {job.jobMode}</li>
+          <li className='flex items-center gap-2'><FontAwesomeIcon className='text-pink-600 w-5 h-5' icon={faFileContract} /> {job.jobType}</li>
+          <li className='flex items-center gap-2'><FontAwesomeIcon className='text-pink-600 w-5 h-5' icon={faClock} /> {job.jobTime}</li>
+          <li className='flex items-center gap-2'><FontAwesomeIcon className='text-pink-600 w-5 h-5' icon={faHandPointUp} /> {job.seniority}</li>
+          <li className='flex items-center gap-2'><FontAwesomeIcon className='text-pink-600 w-5 h-5' icon={faChair} /> {job.openings} vacantes</li>
         </ul>
       </Card>
       <Card>

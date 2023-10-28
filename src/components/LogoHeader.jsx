@@ -4,7 +4,7 @@ import Link from 'next/link'
 
 function LogoHeader () {
   return (
-    <Link href='/' className='logo relative w-[140px] h-[35px]'>
+    <Link href='/' className='relative w-40 min-w-[150px] h-[35px]'>
       <Image src={logotipo} alt='logo team work' fill />
     </Link>
   )

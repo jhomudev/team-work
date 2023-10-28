@@ -10,7 +10,7 @@ import Paragraph from 'antd/es/typography/Paragraph'
 
 async function HomePage () {
   const session = await getServerSession(authOptions)
-  if (session) redirect('/panel/jobs')
+  if (session) redirect('/panel')
 
   return (
     <>
