@@ -4,8 +4,8 @@ import { Avatar, List } from 'antd'
 import Paragraph from 'antd/es/typography/Paragraph'
 import Link from 'next/link'
 
-function SeekersList ({ seekers }) {
-  // const hasSeekers = seekers.length > 0
+function EmployersList ({ employers }) {
+  // const hasemployers = employers.length > 0
   return (
     <List
       pagination={{
@@ -15,25 +15,25 @@ function SeekersList ({ seekers }) {
         pageSize: 5 /* DEFAULT_PARAMS.rowsPerPage */
       }}
       itemLayout='horizontal'
-      dataSource={seekers}
-      renderItem={(seeker, _index) => (
+      dataSource={employers}
+      renderItem={(employer, _index) => (
         <List.Item className='!flex !flex-col'>
           <List.Item.Meta
             className='!w-full'
-            avatar={<Avatar src={`https://unavatar.io/${seeker.user.handle}`} />}
-            title={<Link className='!text-pink-600 !font-medium' href={`/panel/seekers/${seeker.user.handle}`}>{seeker.names} {seeker.lastnames}</Link>}
-            description={seeker.title}
+            avatar={<Avatar src={`https://unavatar.io/${employer.user.handle}`} />}
+            title={<Link className='!text-blue-600 !font-medium' href={`/panel/employers/${employer.user.handle}`}>{employer.name}</Link>}
+            description={employer.area}
           />
           <Paragraph
             ellipsis={{
               rows: 2
             }}
           >
-            {seeker.description}
+            {employer.description}
           </Paragraph>
         </List.Item>
       )}
     />
   )
 }
-export default SeekersList
+export default EmployersList

@@ -12,13 +12,13 @@ const getDataSeeker = async (handle) => {
 }
 
 async function SeekerPage ({ params }) {
-  const seekerHandle = params.seekerHandle
-  const seeker = await getDataSeeker(seekerHandle)
+  const handle = params.handle
+  const seeker = await getDataSeeker(handle)
 
   return (
     <>
       <Flex gap={20} wrap='wrap' align='center'>
-        <Avatar shape='square' size={164} src={`https://xsgames.co/randomusers/avatar.php?g=pixel&key=${seekerHandle}`} />
+        <Avatar shape='square' size={164} src={`https://unavatar.io/${handle}`} />
         <div>
           <Title className='!text-pink-600'>{seeker.names} {seeker.lastnames}</Title>
           <Text strong className='!text-blue-500'>{seeker.title}</Text><br />

@@ -3,7 +3,7 @@ import { NextResponse } from 'next/server'
 
 export const GET = async (_, { params }) => {
   try {
-    const employerHandle = params.employerHandle
+    const employerHandle = params.handle
     const query = `
     SELECT em.employerId ,em.name ,em.description, em.area, em.userId , em.createdAt, em.updatedAt, u.userHandle, u.email as userEmail
     FROM employers em

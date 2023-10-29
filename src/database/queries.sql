@@ -732,7 +732,12 @@ WHERE
   LOWER(area) = "Servicios al Cliente";
 
 
---select applications
+UPDATE
+  employers
+SET
+  description = 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime quia cumque magnam nobis incidunt exercitationem tempora tenetur deserunt at nesciunt, reprehenderit ipsa hic quae aliquam asperiores! Natus accusamus provident aliquid.'
+WHERE
+  `employerId` < 100 --select applications
 SELECT
   *
 FROM

@@ -35,7 +35,7 @@ async function EmployerPanelLayout ({ children }) {
       <div className='flex gap-5 flex-col md:flex-row'>
         <aside className='w-full md:w-[30%]'>
           <Card className='text-center' bodyStyle={{ display: 'flex', flexDirection: 'column', gap: '1rem', alignItems: 'center' }}>
-            <Image style={{ borderRadius: '50%' }} src='https://unavatar.io/team' alt='perfil user' />
+            <Image src={`https://unavatar.io/${data.userHandle}`} alt={data.userHandle} />
             <Text strong className='uppercase !text-pink-600'>{employerData.name}</Text>
             <Paragraph
               type='secondary'
