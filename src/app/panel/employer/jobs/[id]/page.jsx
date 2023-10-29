@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-closing-tag-location */
 import { getLeftTime } from '@/libs/utils/dateFunctions'
 import { faClock, faHandPointUp } from '@fortawesome/free-regular-svg-icons'
 import { faChair, faFileContract, faPlaneArrival, faSliders } from '@fortawesome/free-solid-svg-icons'
@@ -53,7 +54,7 @@ const JobEmployerPage = async ({ params }) => {
           ]}
         />
         <Tooltip placement='top' title='Gestionar'>
-          <Link href={`/panel/employer/jobs/actions/${jobId}`} className='absolute top-7 right-7 text-gray-400 hover:text-gray-700'>
+          <Link href={`/panel/employer/jobs/${jobId}/actions`} className='absolute top-7 right-7 text-gray-400 hover:text-gray-700'>
             <FontAwesomeIcon className='w-4 h-4' icon={faSliders} />
           </Link>
         </Tooltip>
