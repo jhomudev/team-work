@@ -1,15 +1,15 @@
-import HeaderNav from '@/components/HeaderNav'
+import { HeaderNav } from '@/components'
 
 function PanelLayout ({ children }) {
   return (
-    <div>
+    <>
       <HeaderNav hasSession />
       <div className='container-block py-10'>
         {
           children
         }
       </div>
-    </div>
+    </>
   )
 }
 export default PanelLayout

@@ -2,10 +2,9 @@ import { Breadcrumb, Card, Divider, Tag } from 'antd'
 import Title from 'antd/es/typography/Title'
 import Text from 'antd/es/typography/Text'
 import axios from 'axios'
-import EditJobForm from '@/features/EditJobForm'
 import Link from 'next/link'
 import { colorStatus } from '@/libs/ant'
-import ChangeStatesButtons from '@/features/ChangeStatesButtons'
+import { ChangeStatesButtons, EditJobForm } from '@/features'
 
 const getDataJob = async (jobId) => {
   const resAPI = await axios(`${process.env.API_URL}/jobs/${jobId}`)

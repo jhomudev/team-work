@@ -1,5 +1,5 @@
 import { authOptions } from '@/app/api/auth/[...nextauth]/route'
-import UnauthorizedResult from '@/features/UnauthorizedResult'
+import { UnauthorizedResult } from '@/features'
 import { Card } from 'antd'
 import axios from 'axios'
 import { getServerSession } from 'next-auth'

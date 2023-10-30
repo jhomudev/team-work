@@ -1,8 +1,8 @@
-import NewJobForm from '@/features/NewJobForm'
 import { Breadcrumb, Card, Divider } from 'antd'
 import Title from 'antd/es/typography/Title'
 import Text from 'antd/es/typography/Text'
 import Link from 'next/link'
+import { NewJobForm } from '@/features'
 
 async function NewJobPage () {
   return (

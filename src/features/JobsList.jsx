@@ -1,6 +1,5 @@
 'use client'
-import JobCard from '@/components/JobCard'
-import MyPagination from '@/components/MyPagination'
+import { JobCard, MyPagination } from '@/components'
 import { DEFAULT_PARAMS } from '@/libs/utils/getQueryParams'
 import { Button, Empty } from 'antd'
 import { useRouter, useSearchParams } from 'next/navigation'

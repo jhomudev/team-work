@@ -9,7 +9,7 @@ import Title from 'antd/es/typography/Title'
 import Text from 'antd/es/typography/Text'
 import axios from 'axios'
 import Link from 'next/link'
-import AppsListPerJob from '@/features/AppsListPerJob'
+import { AppsListPerJob } from '@/features'
 
 const getDataJob = async (jobId) => {
   const resAPI = await axios(`${process.env.API_URL}/jobs/${jobId}`)

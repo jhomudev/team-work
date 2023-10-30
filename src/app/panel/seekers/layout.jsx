@@ -1,4 +1,4 @@
-import SeekersList from '@/features/SeekersList'
+import { SeekersList } from '@/features'
 import { Breadcrumb, Card, Divider } from 'antd'
 import Title from 'antd/es/typography/Title'
 import axios from 'axios'

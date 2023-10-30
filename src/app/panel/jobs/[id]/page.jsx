@@ -1,7 +1,5 @@
 import { authOptions } from '@/app/api/auth/[...nextauth]/route'
-import AppButton from '@/features/AppButton'
-import JobsRelatedList from '@/features/JobsRelatedList'
-// import PostuleAsideCard from '@/features/PostuleAsideCard'
+import { AppButton, JobsRelatedList } from '@/features'
 import { getLeftTime } from '@/libs/utils/dateFunctions'
 import { userTypes } from '@/static/enums'
 import { faClock, faHandPointUp } from '@fortawesome/free-regular-svg-icons'
@@ -33,10 +31,11 @@ const verifyThereApplication = async ({ jobId, seekerId }) => {
 
 async function JobPage ({ params }) {
   const jobId = params.id
-  const job = await getDataJob({ jobId })
   const { user } = await getServerSession(authOptions)
-  const alreadyApplied = await verifyThereApplication({ jobId, seekerId: user.data.seekerId })
+  const job = await getDataJob({ jobId })
+
   const isSeeker = user.data.type === userTypes.seeker
+  const alreadyApplied = isSeeker ? await verifyThereApplication({ jobId, seekerId: user.data.seekerId }) : false
 
   return (
     <div className='flex gap-3 flex-col'>

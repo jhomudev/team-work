@@ -1,4 +1,3 @@
-import HeaderNav from '@/components/HeaderNav'
 import { bgPortada } from '@/libs/media'
 import { Button, Flex, Space } from 'antd'
 import { getServerSession } from 'next-auth'
@@ -7,6 +6,7 @@ import { redirect } from 'next/navigation'
 import { authOptions } from './api/auth/[...nextauth]/route'
 import Title from 'antd/es/typography/Title'
 import Paragraph from 'antd/es/typography/Paragraph'
+import { HeaderNav } from '@/components'
 
 async function HomePage () {
   const session = await getServerSession(authOptions)

@@ -1,5 +1,4 @@
-import FilterAsideJobs from '@/features/FilterAsideJobs'
-import JobsList from '@/features/JobsList'
+import { FilterAsideJobs, JobsList } from '@/features'
 import { Breadcrumb } from 'antd'
 import axios from 'axios'
 

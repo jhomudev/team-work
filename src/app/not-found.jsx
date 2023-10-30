@@ -2,7 +2,7 @@ import { Button, Result } from 'antd'
 import { getServerSession } from 'next-auth'
 import Link from 'next/link'
 import { authOptions } from './api/auth/[...nextauth]/route'
-import HeaderNav from '@/components/HeaderNav'
+import { HeaderNav } from '@/components'
 
 async function NotFoundPage () {
   const session = await getServerSession(authOptions)

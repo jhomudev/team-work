@@ -2,12 +2,12 @@ import './globals.css'
 import StyledComponentsRegistry from '@/context/AntRegistry'
 import SessionAuthProvider from '@/context/SessionProvider'
 import { ConfigProvider } from 'antd'
-// import { Raleway } from 'next/font/google'
+import { Quicksand } from 'next/font/google'
 
-// const raleway = Raleway({
-//   subsets: ['latin'],
-//   weight: ['400', '500', '600', '700', '800', '900']
-// })
+const quicksand = Quicksand({
+  subsets: ['latin']
+  // weight: ['400', '500', '600', '700', '800', '900']
+})
 
 export const metadata = {
   title: 'TeamWork',
@@ -18,11 +18,16 @@ export default function RootLayout ({ children }) {
   return (
     <html lang='en'>
       <body>
-        <div className='w-full min-h-screen bg-gray-100'>
+        <div className={`w-full min-h-screen bg-gray-100 ${quicksand.className}`}>
           <StyledComponentsRegistry>
             <ConfigProvider theme={{
+              components: {
+                Typography: {
+                  fontFamily: quicksand.style.fontFamily
+                }
+              },
               token: {
-                // fontFamily: raleway.style.fontFamily
+                fontFamily: quicksand.style.fontFamily
               }
             }}
             >

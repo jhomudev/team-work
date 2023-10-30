@@ -1,5 +1,5 @@
 import { authOptions } from '@/app/api/auth/[...nextauth]/route'
-import JobsPerEmployerList from '@/features/JobsPerEmployerList'
+import { JobsPerEmployerList } from '@/features'
 // import { jobStates } from '@/static/enums'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'

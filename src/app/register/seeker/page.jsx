@@ -1,5 +1,5 @@
 import { authOptions } from '@/app/api/auth/[...nextauth]/route'
-import SeekerRegisterForm from '@/features/SeekerRegisterForm'
+import { SeekerRegisterForm } from '@/features'
 import { imgMain } from '@/libs/media'
 import { getServerSession } from 'next-auth'
 import Image from 'next/image'

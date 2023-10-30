@@ -1,4 +1,4 @@
-import HeaderNav from '@/components/HeaderNav'
+import { HeaderNav } from '@/components'
 import RegisterProvider from '@/context/RegisterContext'
 
 function RegisterLayout ({ children }) {

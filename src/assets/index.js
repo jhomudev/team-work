@@ -1,0 +1,6 @@
+export { default as logo } from './logo.png'
+export { default as logotipo } from './logotipo.png'
+export { default as imgMain } from './img-main.png'
+export { default as imgGirlsStudy } from './img-girls-study.png'
+export { default as bgPortada } from './bg-portada.jpg'
+export { default as searchIlustration } from './search-ilustration.svg'

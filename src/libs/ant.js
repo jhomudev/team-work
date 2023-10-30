@@ -2,14 +2,6 @@
 
 import { jobStates } from '@/static/enums'
 
-// theme
-export const theme = {
-  token: {
-    fontSize: 16,
-    colorPrimary: '#52c41a'
-  }
-}
-
 // rules for inputs validations
 export const RULES_INPUT_ANT = {
   required: { required: true, message: 'Complete este campo' },
