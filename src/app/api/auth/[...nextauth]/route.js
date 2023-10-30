@@ -11,7 +11,7 @@ export const authOptions = {
         password: { label: 'Password', type: 'password' }
       },
       async authorize (credentials) {
-        const res = await axios.post('http://localhost:3000/api/auth/login', credentials)
+        const res = await axios.post(`${process.env.API_URL}/auth/login`, credentials)
         const auth = await res.data
 
         // If no error and we have user data, return it

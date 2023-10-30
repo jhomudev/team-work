@@ -110,7 +110,7 @@ function RegisterFormAccount () {
 
   const handleSubmitForm = async (_formData) => {
     setLoading(true)
-    const reqAPI = await axios.post('/api/auth/register/seeker', registerData)
+    const reqAPI = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/auth/register/seeker`, registerData)
     const responseAPI = reqAPI.data
     setLoading(false)
 

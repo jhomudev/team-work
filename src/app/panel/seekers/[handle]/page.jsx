@@ -6,7 +6,7 @@ import axios from 'axios'
 import Avatar from 'antd/es/avatar/avatar'
 
 const getDataSeeker = async (handle) => {
-  const resAPI = await axios(`http://localhost:3000/api/seekers/${handle}`)
+  const resAPI = await axios(`${process.env.API_URL}/seekers/${handle}`)
   const data = await resAPI.data
   return data
 }

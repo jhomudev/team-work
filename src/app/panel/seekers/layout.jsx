@@ -5,7 +5,7 @@ import axios from 'axios'
 import Link from 'next/link'
 
 const getSeekers = async () => {
-  const resAPi = await axios('http://localhost:3000/api/seekers')
+  const resAPi = await axios(`${process.env.API_URL}/seekers`)
   const data = await resAPi.data
   return data
 }

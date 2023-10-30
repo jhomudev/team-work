@@ -18,7 +18,7 @@ function NewJobForm () {
   const handleSubmitForm = async () => {
     try {
       setConfirmLoading(true)
-      const resAPI = await axios.post('http://localhost:3000/api/jobs', {
+      const resAPI = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/jobs`, {
         employerId: session.user.data.employerId,
         ...dataForm
       })

@@ -15,13 +15,13 @@ import { getServerSession } from 'next-auth'
 import Link from 'next/link'
 
 const getDataJob = async ({ jobId }) => {
-  const req = await axios(`http://localhost:3000/api/jobs/${jobId}`)
+  const req = await axios(`${process.env.API_URL}/jobs/${jobId}`)
   const data = await req.data
   return data
 }
 
 const verifyThereApplication = async ({ jobId, seekerId }) => {
-  const req = await axios('http://localhost:3000/api/applications', {
+  const req = await axios(`${process.env.API_URL}/applications`, {
     params: {
       'apps.seekerId': seekerId,
       'apps.jobId': jobId
@@ -62,7 +62,7 @@ async function JobPage ({ params }) {
               <Title className='!text-xl !text-blue-600'>{job.title}</Title>
               {isSeeker && (alreadyApplied && <Tag color='green'>Ya aplicaste</Tag>)}
             </Flex>
-            <Link href={`/employers/${job.employer.handle}`} className='text-sm text-pink-600'>{job.employer.name}</Link>
+            <Link href={`/panel/employers/${job.employer.handle}`} className='text-sm text-pink-600'>{job.employer.name}</Link>
           </div>
           {
             isSeeker && <AppButton jobId={jobId} seekerId={user.data.seekerId} alreadyApplied={alreadyApplied} />

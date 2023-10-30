@@ -11,7 +11,7 @@ import Link from 'next/link'
 export const dynamic = 'force-dynamic'
 
 const getJobs = async ({ employerId }) => {
-  const resAPI = await axios('http://localhost:3000/api/jobs', {
+  const resAPI = await axios(`${process.env.API_URL}/jobs`, {
     params: {
       'j.employerId': employerId,
       sort: 'DESC'

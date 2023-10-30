@@ -9,7 +9,7 @@ import { redirect } from 'next/navigation'
 import axios from 'axios'
 
 const getDataAsEmployer = async (userHandle) => {
-  const resAPI = await axios(`http://localhost:3000/api/employers/${userHandle}`)
+  const resAPI = await axios(`${process.env.API_URL}/employers/${userHandle}`)
   const data = await resAPI.data
 
   return data

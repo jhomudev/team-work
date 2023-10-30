@@ -4,7 +4,7 @@ import { Breadcrumb } from 'antd'
 import axios from 'axios'
 
 const getJobs = async (searchParams = {}) => {
-  const req = await axios('http://localhost:3000/api/jobs', {
+  const req = await axios(`${process.env.API_URL}/jobs`, {
     params: searchParams
   })
   const data = await req.data

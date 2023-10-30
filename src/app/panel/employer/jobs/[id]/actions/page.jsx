@@ -8,7 +8,7 @@ import { colorStatus } from '@/libs/ant'
 import ChangeStatesButtons from '@/features/ChangeStatesButtons'
 
 const getDataJob = async (jobId) => {
-  const resAPI = await axios(`http://localhost:3000/api/jobs/${jobId}`)
+  const resAPI = await axios(`${process.env.API_URL}/jobs/${jobId}`)
   const jobData = await resAPI.data
   return jobData
 }

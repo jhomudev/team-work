@@ -12,13 +12,13 @@ import Link from 'next/link'
 import AppsListPerJob from '@/features/AppsListPerJob'
 
 const getDataJob = async (jobId) => {
-  const resAPI = await axios(`http://localhost:3000/api/jobs/${jobId}`)
+  const resAPI = await axios(`${process.env.API_URL}/jobs/${jobId}`)
   const jobData = await resAPI.data
   return jobData
 }
 
 const getApplications = async (jobId) => {
-  const resAPI = await axios('http://localhost:3000/api/applications', {
+  const resAPI = await axios(`${process.env.API_URL}/applications`, {
     params: {
       'apps.jobId': jobId,
       rowsPerPage: 1000

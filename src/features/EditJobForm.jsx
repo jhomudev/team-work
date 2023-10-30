@@ -18,7 +18,7 @@ function EditJobForm ({ dataJob }) {
   const handleSubmitForm = async () => {
     try {
       setConfirmLoading(true)
-      const resAPI = await axios.put(`http://localhost:3000/api/jobs/${dataJob.jobId}`, dataForm)
+      const resAPI = await axios.put(`${process.env.NEXT_PUBLIC_API_URL}/jobs/${dataJob.jobId}`, dataForm)
       const dataResponse = await resAPI.data
       setConfirmLoading(false)
       setOpenConfirmModal(false)
@@ -35,7 +35,7 @@ function EditJobForm ({ dataJob }) {
       throw new Error(error.message)
     }
   }
-
+  // FIXME: fix this hook
   useEffect(() => {
     form.setFieldsValue({
       title: dataJob.title,

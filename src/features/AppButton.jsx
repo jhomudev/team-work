@@ -6,7 +6,7 @@ import axios from 'axios'
 import { useRouter } from 'next/navigation'
 
 const ApplyToJob = async ({ jobId, seekerId }) => {
-  const resAPI = await axios.post('http://localhost:3000/api/applications', {
+  const resAPI = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/applications`, {
     jobId, seekerId
   })
   const response = await resAPI.data
@@ -15,7 +15,7 @@ const ApplyToJob = async ({ jobId, seekerId }) => {
 }
 
 const cancelJobApplication = async ({ jobId, seekerId }) => {
-  const resAPI = await axios.delete('http://localhost:3000/api/applications', {
+  const resAPI = await axios.delete(`${process.env.NEXT_PUBLIC_API_URL}/applications`, {
     data: { jobId, seekerId }
   })
   const response = await resAPI.data

@@ -33,7 +33,7 @@ function FilterAsideJobs () {
         </Form>
         <Text type='secondary' className='!mb-3'>Realiza tu búsqueda mediante los filtros, asi encontrarás el puesto que buscas mas rápido.</Text>
         <Form
-          layout='horizontal' wrapperCol={4} onValuesChange={(changedValues, allValues) => {
+          layout='horizontal' wrapperCol={4} onValuesChange={(_changedValues, allValues) => {
             const values = Object.fromEntries(
               Object.entries(allValues).filter(([_, valor]) => !!valor)
             )

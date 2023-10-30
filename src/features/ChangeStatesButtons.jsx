@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 
 const changeStateJob = async (jobId, status) => {
-  const resAPI = await axios.put(`http://localhost:3000/api/jobs/${jobId}`, {
+  const resAPI = await axios.put(`${process.env.NEXT_PUBLIC_API_URL}/jobs/${jobId}`, {
     status
   })
   const response = await resAPI.data
