@@ -1,6 +1,6 @@
 import { authOptions } from '@/app/api/auth/[...nextauth]/route'
+import { imgMain } from '@/assets'
 import { EmployerRegisterForm } from '@/features'
-import { imgMain } from '@/libs/media'
 import { getServerSession } from 'next-auth'
 import Image from 'next/image'
 import { redirect } from 'next/navigation'

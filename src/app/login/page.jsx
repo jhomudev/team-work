@@ -1,10 +1,10 @@
 import Image from 'next/image'
-import { imgMain } from '@/libs/media'
 import { getServerSession } from 'next-auth'
 import { redirect } from 'next/navigation'
 import { authOptions } from '../api/auth/[...nextauth]/route'
 import { HeaderNav } from '@/components'
 import { LoginForm } from '@/features'
+import { imgMain } from '@/assets'
 
 async function LoginPage () {
   const session = await getServerSession(authOptions)

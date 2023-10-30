@@ -1,4 +1,4 @@
-import { logotipo } from '@/libs/media'
+import { logotipo } from '@/assets'
 import Image from 'next/image'
 import Link from 'next/link'
 

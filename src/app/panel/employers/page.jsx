@@ -1,4 +1,4 @@
-import { searchIlustration } from '@/libs/media'
+import { searchIlustration } from '@/assets'
 import { Button, Result } from 'antd'
 import Image from 'next/image'
 import Link from 'next/link'
