@@ -94,7 +94,7 @@ async function JobPage ({ params }) {
           <Divider />
           <Card>
             <Title level={3}>Acerca de la empresa</Title>
-            <Title level={4} className='!text-pink-600'>{job.employer.name}</Title>
+            <Title level={4}><Link className='!text-pink-600' href={`/panel/employers/${job.employer.handle}`}>{job.employer.name}</Link></Title>
             <Tag color='blue'>{job.employer.area}</Tag>
             <Divider />
             <Paragraph level={4}>{job.employer.description}</Paragraph>

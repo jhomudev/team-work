@@ -20,7 +20,7 @@ async function EmployersLayout ({ children }) {
         className='w-full'
         items={[
           {
-            title: <Link href='/panel/employer'>Home</Link>
+            title: <Link href='/panel'>Home</Link>
           },
           {
             title: 'Empresas'
