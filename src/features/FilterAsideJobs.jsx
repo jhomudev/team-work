@@ -28,7 +28,7 @@ function FilterAsideJobs () {
         <Title level={3}>Filtro de trabajos</Title>
         <Form layout='vertical' onFinish={handleSubmitForm}>
           <Form.Item label={<Text type='secondary'>Realiza tu búsqueda hacia los puestos que desees.</Text>} name='keyword'>
-            <Input.Search size='large' placeholder='Ingeniero de software...' />
+            <Input.Search size='large' placeholder='Ingeniero de software...' onSearch={(value, _e, _info) => handleSubmitForm({ keyword: value })} />
           </Form.Item>
         </Form>
         <Text type='secondary' className='!mb-3'>Realiza tu búsqueda mediante los filtros, asi encontrarás el puesto que buscas mas rápido.</Text>
