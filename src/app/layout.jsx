@@ -22,6 +22,9 @@ export default function RootLayout ({ children }) {
           <StyledComponentsRegistry>
             <ConfigProvider theme={{
               components: {
+                Button: {
+                  colorPrimary: '#4096ff !important'
+                },
                 Typography: {
                   fontFamily: quicksand.style.fontFamily
                 }

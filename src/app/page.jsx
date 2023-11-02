@@ -35,7 +35,7 @@ async function HomePage () {
               <Button size='large' type='primary' className='!bg-pink-600 !text-white'>Busco trabajo</Button>
             </Link>
             <Link href='register/employer'>
-              <Button size='large'>Busco personal</Button>
+              <Button size='large' type='default'>Busco personal</Button>
             </Link>
           </Space>
           {/* <div className='w-[min(100%,400px)] sm:w-[clamp(200px,40%,400px)]'>

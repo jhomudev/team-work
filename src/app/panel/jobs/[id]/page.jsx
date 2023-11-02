@@ -69,7 +69,7 @@ async function JobPage ({ params }) {
         </Flex>
       </Card>
       <div className='flex gap-3 flex-col md:flex-row'>
-        <main className='w-full'>
+        <main className='w-full md:w-4/5'>
           <Card className='w-full'>
             <small className='text-gray-500'>Publicado {getLeftTime(job.createdAt)}</small>
             <Title level={3}>Descripción</Title>
@@ -99,7 +99,6 @@ async function JobPage ({ params }) {
             <Divider />
             <Paragraph level={4}>{job.employer.description}</Paragraph>
           </Card>
-          {/* <JobsRelatedList /> */}
         </main>
         <JobsRelatedList />
       </div>
