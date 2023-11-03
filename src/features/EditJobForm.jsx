@@ -1,5 +1,4 @@
 'use client'
-
 import { Button, Form, Input, InputNumber, Modal, Select, message } from 'antd'
 import { RULES_INPUT_ANT, filterOption } from '@/libs/ant'
 import { JOB_OPTIONS } from '@/libs/utils/contants'
@@ -9,6 +8,7 @@ import { useRouter } from 'next/navigation'
 import { useForm } from 'antd/es/form/Form'
 
 function EditJobForm ({ dataJob }) {
+  const { title, jobMode, jobType, jobTime, seniority, openings, description } = dataJob
   const router = useRouter()
   const [openConfirmModal, setOpenConfirmModal] = useState(false)
   const [dataForm, setDataForm] = useState({})
@@ -35,17 +35,19 @@ function EditJobForm ({ dataJob }) {
       throw new Error(error.message)
     }
   }
-  // FIXME: fix this hook
+
   useEffect(() => {
+    setDataForm({ title, jobMode, jobType, jobTime, seniority, openings, description })
     form.setFieldsValue({
-      title: dataJob.title,
-      jobMode: dataJob.jobMode,
-      jobType: dataJob.jobType,
-      jobTime: dataJob.jobTime,
-      seniority: dataJob.seniority,
-      openings: dataJob.openings,
-      description: dataJob.description
+      title,
+      jobMode,
+      jobType,
+      jobTime,
+      seniority,
+      openings,
+      description
     })
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [form])
 
   return (
