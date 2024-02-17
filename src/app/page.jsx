@@ -16,7 +16,7 @@ async function HomePage () {
     <>
       <HeaderNav />
       <div
-        className='relative h-[80vh] min-h-[30rem] flex bg-pink-800 bg-no-repeat bg-fixed after:content-[""] after:bg-black/40 after:absolute after:top-0 after:left-0 after:w-full after:h-full'
+        className='relative h-[80vh] min-h-[30rem] flex bg-pink-800 bg-no-repeat bg-fixed after:content-[""] after:bg-black/60 after:absolute after:top-0 after:left-0 after:w-full after:h-full'
         style={{
           backgroundImage: `url(${bgPortada.src})`
         }}

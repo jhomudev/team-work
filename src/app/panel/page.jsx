@@ -5,8 +5,7 @@ import { userTypes } from '@/static/enums'
 
 async function PanelPage () {
   const session = await getServerSession(authOptions)
-
-  if (session.user.data.type === userTypes.employer) {
+  if (session.user.type === userTypes.employer) {
     redirect('/panel/employer')
   }
 
